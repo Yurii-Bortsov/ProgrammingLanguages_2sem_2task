@@ -11,6 +11,9 @@ namespace miit
         public:
             List();
             void PushBack(const int data);
+            void PushAhead(const int data);
+            void DeleteBack();
+            void DeleteAhead();
             bool IsEmpty();
             
             /**
@@ -20,5 +23,8 @@ namespace miit
              * @return Поток вывода.
             */
             friend std::ostream& operator << (std::ostream& os, const List& list);
+    
+            bool operator == (const miit::List& list);
+            bool operator != (const miit::List& list);
     };
 }
