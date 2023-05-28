@@ -16,5 +16,5 @@ namespace miit
          * @param previous Указатель на предыдующий элемент списка.
         */
         Node(const int data, Node* next = nullptr, Node* previous = nullptr);
-    };
+    };  
 }
