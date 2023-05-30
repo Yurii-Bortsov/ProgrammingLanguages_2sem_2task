@@ -1,5 +1,7 @@
 #include "list.h"
 #include <iostream>
+#include <sstream>
+
 
 miit::List::List(Node* head, Node* tail):head(head), tail(tail){}
 
@@ -7,9 +9,9 @@ miit::List::~List()
 {
 	while (this->tail != this->head)
 	{
-
 		miit::List::DeleteAhead();
 	}
+
 	if (this->tail == this->head)
 	{
 		delete head;
@@ -112,32 +114,21 @@ std::ostream &miit::operator<<(std::ostream &os, const List &list)
         os << temp->data << " ";
         temp = temp->previous;
     }
-	delete(temp);
-	temp = nullptr;
     return os;
 }
-
-bool miit::List::operator==(const miit::List &list)
+bool miit::List::operator== (miit::List& list)
 {
-	Node *lha = list.head;
-	Node *rha = this->head;
-    while (lha != list.tail->previous)
-    {
-		if (rha->data != lha->data)
-		{
-			return false;
-		}
-        rha = rha->previous;
-		lha = lha->previous;
-    }
-	delete(lha);
-	lha = nullptr;
-	delete(rha);
-	rha = nullptr;
-	return true;
+	return (this->toString() == list.toString());
 }
 
-bool miit::List::operator!=(const miit::List &list)
+std::string miit::List::toString()
+{
+	std::stringstream buffer;
+	buffer << *this;
+    return buffer.str();
+}
+
+bool miit::List::operator!=(miit::List list)
 {
     return !(*this == list);
 }

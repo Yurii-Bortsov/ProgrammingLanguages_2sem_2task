@@ -10,6 +10,7 @@ namespace miit
             Node *tail;
         public:
 
+            std::string toString();
             /**
             * @brief Конструктор класса List.
             * @param head Указатель на первый элемент списка.
@@ -62,13 +63,13 @@ namespace miit
              * @param list Список для сравнения
              * @return True, если списки равны, иначе false
              */
-            bool operator == (const miit::List& list);
+            bool operator == (miit::List& list);
             
             /**
              * @brief Перегружает оператор != для сравнения двух списков
              * @param list Список для сравнения
              * @return True, если списки не равны, иначе false
              */
-            bool operator != (const miit::List& list);
+            bool operator != (miit::List list);
     };
 }
