@@ -10,7 +10,43 @@ namespace miit
             Node *tail;
         public:
 
+            /**
+             * @brief Конструктор перемещения класса List.
+             * @param other Объект для перемещения.
+             */
+            List(List&& other);
+
+            /**
+             * @brief Оператор присваивания перемещением для класса List.
+             * @param other Объект для перемещения.
+             * @return Ссылка на текущий объект.
+             */
+            List& operator=(List&& other);
+
+            /**
+             * @brief Конструктор копирования класса List.
+             * @param other Объект для копирования.
+             */
+            List(const List& other);
+
+            /**
+             * @brief Оператор присваивания копированием для класса List.
+             * @param other Объект для копирования.
+             * @return Ссылка на текущий объект.
+             */
+            List& operator=(const List& other);
+
+            /**
+             * @brief Очищает список, удаляя все его элементы.
+             */
+            void clear();
+
+            /**
+             * @brief Возвращает строковое представление списка.
+             * @return Строка, содержащая все элементы списка.
+             */
             std::string toString();
+            
             /**
             * @brief Конструктор класса List.
             * @param head Указатель на первый элемент списка.

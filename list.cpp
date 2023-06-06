@@ -3,9 +3,14 @@
 #include <sstream>
 
 
-miit::List::List(Node* head, Node* tail):head(head), tail(tail){}
+miit::List::List(Node* head, Node* tail) : head(head), tail(tail){}
 
 miit::List::~List()
+{
+	clear();
+}
+
+void miit::List::clear()
 {
 	while (this->tail != this->head)
 	{
@@ -84,7 +89,6 @@ void miit::List::DeleteBack()
 	{
 		next->previous = nullptr;
 	}
-	delete this->tail;
 	this->tail = next;
 }
 
@@ -96,7 +100,6 @@ void miit::List::DeleteAhead()
 	{
 		previous->next = nullptr;
 	}
-	delete this->head;
 	this->head = previous;
 }
 
@@ -131,4 +134,40 @@ std::string miit::List::toString()
 bool miit::List::operator!=(miit::List list)
 {
     return !(*this == list);
+}
+
+miit::List::List(const List& other) : head(nullptr), tail(nullptr) 
+{
+    Node* temp = other.head;
+    while (temp != nullptr)
+    {
+        this->PushBack(temp->data);
+        temp = temp->previous;
+    }
+}
+
+miit::List& miit::List::operator=(const List& other)
+{
+    Node* temp = other.head;
+    while (temp != nullptr)
+    {
+        this->PushBack(temp->data);
+        temp = temp->previous;
+    }
+    return *this;
+}
+
+miit::List::List(miit::List&& other) : head(other.head), tail(other.tail) {}
+
+miit::List& miit::List::operator=(miit::List&& other)
+{
+    if (this != &other)
+    {
+        clear();
+        head = other.head;
+        tail = other.tail;
+        other.head = nullptr;
+        other.tail = nullptr;
+    }
+    return *this;
 }
