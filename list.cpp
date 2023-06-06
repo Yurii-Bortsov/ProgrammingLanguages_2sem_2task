@@ -20,7 +20,7 @@ void miit::List::clear()
 	if (this->tail == this->head)
 	{
 		delete head;
-		head = nullptr;
+
 	}
 }
 
@@ -87,6 +87,7 @@ void miit::List::DeleteBack()
 
 	if (next != nullptr)
 	{
+		delete next->previous;
 		next->previous = nullptr;
 	}
 	this->tail = next;
@@ -98,6 +99,7 @@ void miit::List::DeleteAhead()
 
 	if (previous != nullptr)
 	{
+		delete previous->next;
 		previous->next = nullptr;
 	}
 	this->head = previous;
@@ -148,11 +150,15 @@ miit::List::List(const List& other) : head(nullptr), tail(nullptr)
 
 miit::List& miit::List::operator=(const List& other)
 {
-    Node* temp = other.head;
-    while (temp != nullptr)
+    if (this != &other)
     {
-        this->PushBack(temp->data);
-        temp = temp->previous;
+        clear();
+        Node* temp = other.head;
+        while (temp != nullptr)
+        {
+            this->PushBack(temp->data);
+            temp = temp->previous;
+        }
     }
     return *this;
 }
