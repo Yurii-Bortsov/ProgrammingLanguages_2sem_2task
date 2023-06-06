@@ -20,7 +20,6 @@ void miit::List::clear()
 	if (this->tail == this->head)
 	{
 		delete head;
-
 	}
 }
 
