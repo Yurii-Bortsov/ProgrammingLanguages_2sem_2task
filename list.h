@@ -14,14 +14,14 @@ namespace miit
              * @brief Конструктор перемещения класса List.
              * @param other Объект для перемещения.
              */
-            List(List&& other);
+            List(List&& other) noexcept;
 
             /**
              * @brief Оператор присваивания перемещением для класса List.
              * @param other Объект для перемещения.
              * @return Ссылка на текущий объект.
              */
-            List& operator=(List&& other);
+            List& operator=(List&& other) noexcept;
 
             /**
              * @brief Конструктор копирования класса List.
