@@ -3,7 +3,7 @@
 #include <sstream>
 
 
-miit::List::List(Node* head, Node* tail) : head(head), tail(tail){}
+miit::List::List(Node* head, Node* tail) : head(head), tail(tail) {}
 
 miit::List::~List()
 {
