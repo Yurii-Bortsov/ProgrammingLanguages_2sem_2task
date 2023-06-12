@@ -3,7 +3,7 @@
 #include <sstream>
 
 
-miit::List::List(Node* head, Node* tail) : head(head), tail(tail) {}
+miit::List::List(Node* head, Node* tail) : head(head), tail(tail){}
 
 miit::List::~List()
 {
@@ -162,9 +162,9 @@ miit::List& miit::List::operator=(const List& other)
     return *this;
 }
 
-miit::List::List(miit::List&& other) : head(other.head), tail(other.tail) {}
+miit::List::List(miit::List&& other) noexcept : head(other.head), tail(other.tail) {}
 
-miit::List& miit::List::operator=(miit::List&& other)
+miit::List& miit::List::operator=(miit::List&& other) noexcept
 {
     if (this != &other)
     {
