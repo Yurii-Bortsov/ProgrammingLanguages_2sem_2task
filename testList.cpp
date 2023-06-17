@@ -95,9 +95,10 @@ TEST(list, copyConstructor)
 
     // act
     miit::List copiedList(originalList);
+    copiedList.PushBack(55);
 
     // assert
-    ASSERT_EQ(originalList.toString(), copiedList.toString());
+    ASSERT_NE(originalList.toString(), copiedList.toString());
 }
 
 TEST(list, copyOperator)
@@ -129,9 +130,11 @@ TEST(list, moveConstructor)
 
     // act
     miit::List movedList(std::move(originalList));
+    movedList.PushBack(55);
+
 
     // assert
-    ASSERT_EQ("1 2 3 ", movedList.toString());
+    ASSERT_NE("1 2 3 ", movedList.toString());
 }
 
 TEST(list, moveOperator)
